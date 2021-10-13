@@ -13,7 +13,6 @@ import { useRecommendedContext } from "../contexts/RecommendedContext";
 
 const Category = () => {
 	const [categoryItem, setCategoryItem] = useState("");
-
 	const { brandsRecommendedInCategory, setBrandsRecommendedInCategory } =
 		useRecommendedContext();
 	const { setSearchValueState } = useProductContext();

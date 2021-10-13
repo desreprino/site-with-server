@@ -29,5 +29,8 @@
 	"devDependencies": {
 		"eslint-plugin-react": "^7.26.1",
 		"nodemon": "^2.0.13"
+	},
+	"engines": {
+		"yarn": "1.x"
 	}
 }

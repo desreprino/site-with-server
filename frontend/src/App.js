@@ -10,6 +10,7 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail"
 
 function App() {
 	const routes = [
@@ -19,6 +20,11 @@ function App() {
 			path: "/productos/categorias/:category",
 			component: <Category />,
 			exact: false,
+		},
+		{ 
+			path: "/product/:slug", 
+			component: <ProductDetail />,
+			exact: true,
 		},
 		{ path: "/nosotros", component: <AboutUs /> },
 		{ path: "/contacto", component: <Contact /> },

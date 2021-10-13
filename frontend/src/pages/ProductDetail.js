@@ -1,20 +1,23 @@
+import Details from '../components/Details'
+
+import { useProductContext } from "../contexts/ProductContext";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 import sanityClient from "../utils/sanityClient";
 import { urlFor } from "../utils/images";
 
-import Loading from "./Loading";
-import ProductItem from "./ProductItem";
-import Message from "./Message";
+import Loading from "../components/Loading";
+import Message from "../components/Message";
 
-import { useProductContext } from "../contexts/ProductContext";
+const ProductDetail = () => {
 
-const ProductsList = () => {
-	const [products, setProducts] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+    const [product, setProduct] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+    const { slug } = useParams();
 
-	const {
+    const {
 		categoryOptionState,
 		setCategoryOptionState,
 		brandOptionState,
@@ -48,20 +51,22 @@ const ProductsList = () => {
 				setIsLoading(true);
 
 				const data = await sanityClient.fetch(query);
+                console.log(data)
 
 				const products = await data?.map((product) => {
-					return {
-						name: product.nombre,
-						slug: product.slug,
-						image: urlFor(product.imagen).url(),
-					};
+                        return {
+                            name: product.nombre,
+                            slug: product.slug,
+                            image: urlFor(product.imagen).url(),
+                        };	
 				});
 
-				setProducts(products);
+                const productDetail = products?.filter(product => product.slug.current === slug)
 
+				setProduct(productDetail);
 				setIsLoading(false);
 			} catch (error) {
-				setProducts([]);
+				setProduct([]);
 				setIsLoading(false);
 				setIsError(true);
 				console.log(error);
@@ -74,21 +79,23 @@ const ProductsList = () => {
 		categoryOptionState,
 		engineOptionState,
 		searchValueState,
+        slug
 	]);
+
 	return (
-		<ul className="productList">
-			{isLoading ? (
+		<section className="">
+            {isLoading ? (
 				<Loading />
-			) : isError || products.length === 0 ? (
-				<Message>No hay productos</Message>
+			) : isError || product.length === 0 ? (
+				<Message>No se encontró el producto seleccionado</Message>
 			) : (
-				products.map((product, index) => {
-					return (
-						<ProductItem product={product} key={index} />
-					);
-				})
-			)}
-		</ul>
+			<>
+                <Details product={product} />
+            </>
+            )
+            }
+		</section>
 	);
 };
-export default ProductsList;
+
+export default ProductDetail;

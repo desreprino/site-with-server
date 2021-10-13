@@ -1,15 +1,13 @@
-import { Link } from "react-router-dom";
+
 
 const Details = ({ product }) => {
-
-	
 	return (
         <div className="details">
             <div className="details__imgContainer">
                 <img src={product[0].image} alt="productImg"></img>
-                <Link to="/">
+                <a href={`https://api.whatsapp.com/send?text=Hola%2c+quiero+saber+el+precio+de+${product[0].name} &phone=11 3688-7118`} target="_blank" rel="noreferrer noopener">
                     <button className="details__imgContainer__wppButton">Cotizar por Wpp</button>
-                </Link>
+                </a>
             </div>
             <h1 className="details__title"> {product[0].name} </h1>
             <p>Aplication: </p>

@@ -1,0 +1,28 @@
+.filterSearchFragment
+    display: flex
+    flex-wrap: nowrap
+    width: 90%
+    align-items: center
+    justify-content: space-between
+    height: 2em
+
+    &__inputText
+        @include typography(Roboto, normal, 1.2rem, $white)
+        width: 78%
+        height: 100%
+        background: $black
+        box-shadow: 3px 2px 3px #FFFFFF54
+        border-radius: 11px
+        padding: 0 .5rem
+        &:focus
+            outline: none
+            box-shadow: 0px 0px 8px $white
+
+    &__searchButton
+        @include typography(Roboto, normal, 1.2rem, $white)
+        background: transparent linear-gradient(180deg, $midGrey 0%, $black 100%)
+        border: 1px solid $borderGrey
+        border-radius: 11px
+        width: 17%
+        height: 110%
+        cursor: pointer

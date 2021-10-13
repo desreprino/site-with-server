@@ -1,0 +1,44 @@
+.navBar
+    align-items: center
+    display: flex
+    flex-basis: 50vw
+    flex-grow: 999
+    flex-wrap: nowrap
+    height: 4rem
+
+    &__list
+        display: flex
+        flex-wrap: nowrap
+        gap: 2rem
+        justify-content: right
+        padding: 0 1rem 0 0
+        width: 100%
+
+        &Item
+            min-width: 10rem
+            width: 9vw
+
+    &__link
+        height: 100%
+        width: 100%
+        &:link
+            @include typography(null, null, 1rem, $grey)
+            display: block
+            margin: .2rem 0
+            text-align: right
+
+        &:visited
+            @include typography(null, null, 1rem, $grey)
+
+        &--active
+            border-bottom: solid 2px $white
+            box-shadow: 0px 5px 7px -5px $white
+            &:link
+                color: $white
+
+            &:visited
+                color: $white
+
+    &__text
+        padding: 0 .4rem
+        font-size: 1rem

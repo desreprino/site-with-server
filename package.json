@@ -1,0 +1,33 @@
+{
+	"name": "site",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node --experimental-modules backend/server.js",
+		"dev": "nodemon --experimental-modules backend/server.js",
+		"build": "cd frontend && yarn install && yarn build",
+		"devBuild": "cd frontend && yarn install && yarn start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/desreprino/site.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/desreprino/site/issues"
+	},
+	"homepage": "https://github.com/desreprino/site#readme",
+	"dependencies": {
+		"express": "^4.17.1",
+		"morgan": "^1.10.0",
+		"nodemailer": "^6.7.0"
+	},
+	"devDependencies": {
+		"eslint-plugin-react": "^7.26.1",
+		"nodemon": "^2.0.13"
+	}
+}

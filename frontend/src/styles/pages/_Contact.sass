@@ -1,0 +1,19 @@
+.contact
+    align-items: center
+    display: flex
+    flex-flow: column nowrap
+    width: 40rem
+    min-width: 40vw
+    max-width: 90vw
+    gap: 1.3rem
+    margin-bottom: 2rem
+
+    &__phoneContainer
+        display: flex
+        width: 100%
+        justify-content: center
+        gap: 1rem
+    &__waIcon
+        max-height: 4rem
+    &__phoneNumber
+        @include typography(Roboto, bold, 3rem, $white)

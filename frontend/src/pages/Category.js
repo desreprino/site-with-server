@@ -12,7 +12,7 @@ import { useProductContext } from "../contexts/ProductContext";
 import { useRecommendedContext } from "../contexts/RecommendedContext";
 
 const Category = () => {
-	const [image, setImage] = useState("");
+	const [categoryItem, setCategoryItem] = useState("");
 
 	const { brandsRecommendedInCategory, setBrandsRecommendedInCategory } =
 		useRecommendedContext();
@@ -25,13 +25,16 @@ const Category = () => {
 
 		const getImage = async (query) => {
 			try {
-				const data = await sanityClient.fetch(query);
+				const [item] = await sanityClient.fetch(query);
 
-				const gettedImage = urlFor(data[0].imagen).url();
+				const gettedItem = {
+					name: item.nombre,
+					image: urlFor(item.imagen).url(),
+				};
 
-				setImage(gettedImage);
+				setCategoryItem(gettedItem);
 			} catch (error) {
-				setImage("");
+				setCategoryItem({});
 				console.log(error);
 			}
 		};
@@ -60,12 +63,18 @@ const Category = () => {
 	return (
 		<section className="category">
 			<div
-				className={`category__name  ${!image && "category__name--isntImage"}`}
+				className={`category__name  ${
+					!categoryItem.image && "category__name--isntImage"
+				}`}
 			>
-				{image && (
-					<img src={image} alt={category} className="category__image" />
+				{categoryItem.image && (
+					<img
+						src={categoryItem.image}
+						alt={category}
+						className="category__image"
+					/>
 				)}
-				<h1 className="category__title">{category}</h1>
+				<h1 className="category__title">{categoryItem.name}</h1>
 			</div>
 			{brandsRecommendedInCategory && <BrandCardContainer />}
 			<FilterSearchFragment stateSetter={setSearchValueState} />

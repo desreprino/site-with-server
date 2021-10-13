@@ -1,9 +1,12 @@
 import express, { json, urlencoded } from "express";
 import morgan from "morgan";
 import sendEmail from "./mailer.js";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
@@ -18,6 +21,8 @@ app.post("/sendmail", async (req, res) => {
 		console.log(error);
 	}
 });
+
+app.use(express.static(resolve(__dirname, "../frontend/build")));
 
 const server = app.listen(PORT, () =>
 	console.log(`Serve on http://localhost:${PORT}`)

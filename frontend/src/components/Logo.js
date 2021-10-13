@@ -5,9 +5,9 @@ import logo from "../assets/images/rino_logo.svg";
 const Logo = () => {
 	return (
 		<Link className="logo" to="/">
-			<div className="logo">
+			<figure className="logo">
 				<img className="logo__image" src={logo} alt="Repuestos Rino" />
-			</div>
+			</figure>
 		</Link>
 	);
 };

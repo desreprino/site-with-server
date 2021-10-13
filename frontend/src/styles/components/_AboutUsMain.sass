@@ -1,6 +1,6 @@
 .aboutUsMain
     display: flex
-    flex-wrap: wrap
+    flex-wrap: nowrap
     gap: 3%
     &__image
         width: 100%
@@ -46,3 +46,7 @@
 
         &:visited
             color: $grey
+
+@media (max-width: 780px)
+    .aboutUsMain
+        flex-direction: column

@@ -33,14 +33,14 @@ const ProductsList = () => {
 	useEffect(() => {
 		const categoryPartQuery = `categoria._ref in *[_type=="categoria" && nombre=="${categoryOptionState}"]._id`;
 		const brandPartQuery = `marca._ref in *[_type=="marca" && nombre=="${brandOptionState}"]._id`;
-		const enginePartQuery = `motor._ref in *[_type=="motor" && nombre=="${engineOptionState}"]._id`;
+		const enginePartQuery = `*[_type == "producto"]{motores}.motores[]._ref match *[_type=="motor" && nombre=="${engineOptionState}"]._id`;
 		const searchPartQuery = `nombre match "*${searchValueState}*"`;
 
 		const query = `*[_type == "producto"${
-			categoryOptionState && ` && ${categoryPartQuery}`
-		}${brandOptionState && ` && ${brandPartQuery}`}${
-			engineOptionState && ` && ${enginePartQuery}`
-		}${searchValueState && ` && ${searchPartQuery}`}]`;
+			categoryOptionState ? ` && ${categoryPartQuery}` : ""
+		}${brandOptionState ? ` && ${brandPartQuery}` : ""}${
+			engineOptionState ? ` && ${enginePartQuery}` : ""
+		}${searchValueState ? ` && ${searchPartQuery}` : ""}]`;
 
 		const getProducts = async (query) => {
 			try {
@@ -48,7 +48,6 @@ const ProductsList = () => {
 				setIsLoading(true);
 
 				const data = await sanityClient.fetch(query);
-
 				const products = await data?.map((product) => {
 					return {
 						name: product.nombre,
@@ -58,7 +57,6 @@ const ProductsList = () => {
 				});
 
 				setProducts(products);
-
 				setIsLoading(false);
 			} catch (error) {
 				setProducts([]);
@@ -83,9 +81,7 @@ const ProductsList = () => {
 				<Message>No hay productos</Message>
 			) : (
 				products.map((product, index) => {
-					return (
-						<ProductItem product={product} key={index} />
-					);
+					return <ProductItem product={product} key={index} />;
 				})
 			)}
 		</ul>

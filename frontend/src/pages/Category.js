@@ -13,9 +13,10 @@ import { useRecommendedContext } from "../contexts/RecommendedContext";
 
 const Category = () => {
 	const [categoryItem, setCategoryItem] = useState("");
+
 	const { brandsRecommendedInCategory, setBrandsRecommendedInCategory } =
 		useRecommendedContext();
-	const { setSearchValueState } = useProductContext();
+	const { setSearchValueState, setCategoryOptionState } = useProductContext();
 
 	const { category } = useParams();
 
@@ -32,14 +33,14 @@ const Category = () => {
 				};
 
 				setCategoryItem(gettedItem);
+				setCategoryOptionState(gettedItem.name);
 			} catch (error) {
 				setCategoryItem({});
 				console.log(error);
 			}
 		};
-
 		getImage(query);
-	}, [category]);
+	}, [category, setCategoryOptionState]);
 
 	useEffect(() => {
 		const query = `*[_type == "destacados" && nombre == "Marcas en Categoría"]`;
@@ -61,7 +62,7 @@ const Category = () => {
 
 	return (
 		<section className="category">
-			<div
+			<figure
 				className={`category__name  ${
 					!categoryItem.image && "category__name--isntImage"
 				}`}
@@ -74,7 +75,7 @@ const Category = () => {
 					/>
 				)}
 				<h1 className="category__title">{categoryItem.name}</h1>
-			</div>
+			</figure>
 			{brandsRecommendedInCategory && <BrandCardContainer />}
 			<FilterSearchFragment stateSetter={setSearchValueState} />
 			<ProductsList />

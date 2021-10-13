@@ -57,7 +57,10 @@ const Carousel = () => {
 						className="carousel__arrow carousel__arrow--left"
 					/>
 				)}
-				<div className="carousel__slidesContainer" style={slidesContainerStyle}>
+				<figure
+					className="carousel__slidesContainer"
+					style={slidesContainerStyle}
+				>
 					{slides.map((slide, index) => {
 						return (
 							<img
@@ -69,7 +72,7 @@ const Carousel = () => {
 							/>
 						);
 					})}
-				</div>
+				</figure>
 				{position === slides.length - 1 || (
 					<img
 						src={rightArrow}
@@ -79,19 +82,21 @@ const Carousel = () => {
 					/>
 				)}
 			</div>
-			<div className="carousel__dotsContainer">
-				{slides.map((slide, index) => {
-					return (
-						<button
-							key={index}
-							className={`carousel__dot ${
-								position === index && "carousel__dot--active"
-							}`}
-							onClick={() => setPosition(index)}
-						/>
-					);
-				})}
-			</div>
+			{slides?.length > 1 && (
+				<div className="carousel__dotsContainer">
+					{slides.map((slide, index) => {
+						return (
+							<button
+								key={index}
+								className={`carousel__dot ${
+									position === index && "carousel__dot--active"
+								}`}
+								onClick={() => setPosition(index)}
+							/>
+						);
+					})}
+				</div>
+			)}
 		</div>
 	);
 };

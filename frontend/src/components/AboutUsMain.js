@@ -8,9 +8,9 @@ const AboutUsMain = ({ isHome }) => {
 
 	return (
 		<div className="aboutUsMain">
-			<div className="aboutUsMain__imageContainer">
+			<figure className="aboutUsMain__imageContainer">
 				<img className="aboutUsMain__image" src={usImage} alt="Nosotros" />
-			</div>
+			</figure>
 			<div className="aboutUsMain__textContainer">
 				<img
 					className="aboutUsMain__legend"

@@ -16,7 +16,7 @@ const NavBar = () => {
 		{ path: "/", text: "Home" },
 		{ path: "/productos", text: "Productos" },
 		{
-			href: "https://www.mercadolibre.com.ar",
+			href: "https://listado.mercadolibre.com.ar/_CustId_797328095?item_id=MLA934814906&category_id=MLA373298&seller_id=797328095&client=recoview-selleritems&recos_listing=true&fbclid=IwAR3P3Fk9Jgw_s2kEb_zwLVcbUy2HuT-pcoOWXpfLfehEh-9x56rcUmRxFy8",
 			text: "Tienda",
 			target: "_blank",
 		},

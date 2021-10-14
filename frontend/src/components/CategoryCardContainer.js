@@ -44,7 +44,7 @@ const CategoryCardContainer = () => {
 					<Link
 						key={index}
 						className="categoryCardContainer__link"
-						to={`/productos/categorias/${category.slug}`}
+						to={`/categorias/${category.slug}`}
 					>
 						<Card name={category.name} image={category.image} />
 					</Link>

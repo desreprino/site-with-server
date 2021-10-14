@@ -10,6 +10,7 @@ import marca from "./marca";
 import motor from "./motor";
 import carousel from "./carousel";
 import destacados from "./destacados";
+import dato from "./dato";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,5 +27,6 @@ export default createSchema({
 		motor,
 		carousel,
 		destacados,
+		dato,
 	]),
 });

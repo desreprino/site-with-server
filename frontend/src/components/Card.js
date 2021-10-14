@@ -4,7 +4,7 @@ const Card = ({ name, image }) => {
 			<figure className="card__imageContainer">
 				<img className="card__image" src={image} alt={name} />
 			</figure>
-			<strong className="card__name">{name}</strong>
+			{name ? <strong className="card__name">{name}</strong> : ""}
 		</div>
 	);
 };

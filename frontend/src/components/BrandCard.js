@@ -8,7 +8,11 @@ const BrandCard = ({ brandName, brandImageURL }) => {
 					alt={brandName}
 				/>
 			</figure>
-			<span className="aboutUsBrandCard__name">{brandName}</span>
+			{brandName ? (
+				<span className="aboutUsBrandCard__name">{brandName}</span>
+			) : (
+				""
+			)}
 		</div>
 	);
 };

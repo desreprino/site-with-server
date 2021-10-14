@@ -40,7 +40,6 @@ const BrandsContainer = () => {
 					<BrandCard
 						key={index}
 						slug={brand.slug}
-						brandName={brand.name}
 						brandImageURL={brand.image}
 					/>
 				);

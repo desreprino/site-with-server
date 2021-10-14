@@ -35,10 +35,10 @@ export default {
 			to: { type: "marca" },
 		},
 		{
-			name: "motor",
-			title: "Motor",
-			type: "reference",
-			to: { type: "motor" },
+			name: "motores",
+			title: "Motores",
+			type: "array",
+			of: [{ type: "reference", to: { type: "motor" } }],
 		},
 		{
 			name: "link",

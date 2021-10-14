@@ -26,8 +26,11 @@ const AboutUsMain = ({ isHome }) => {
 					>
 						es una empresa joven dedicada a la importación, exportación,
 						fabricación y distribución de partes y repuestos de motor de todos
-						los modelos y de todas las marcas, tanto de linea liviana, como
-						pesada y agraria.
+						los modelos y de todas las marcas, tanto de linea liviana,
+						<span className="aboutUsMain__paragraphFinal">
+							{" "}
+							como pesada y agraria.
+						</span>
 					</p>
 				</div>
 				{isHome ? (
@@ -39,13 +42,20 @@ const AboutUsMain = ({ isHome }) => {
 						<p className="aboutUsMain__paragraph">
 							Contamos con amplios conocimientos técnicos, para poder brindarles
 							una respuesta concreta a cualquier inquietud, y de ese modo
-							aportar una solución integra.
+							<span className="aboutUsMain__paragraphFinal">
+								{" "}
+								aportar una solución integra.
+							</span>
 						</p>
 						<p className="aboutUsMain__paragraph">
 							Permanentemente estamos incorporando nuevos productos a nuestro
 							amplio stock de repuestos, somos importadores directos con
 							proveedores distribuidos en Japón, Inglaterra, Estados Unidos,
-							Brasil, Turquía, India, China y Korea.
+							Brasil,
+							<span className="aboutUsMain__paragraphFinal">
+								{" "}
+								Turquía, India, China y Korea.
+							</span>
 						</p>
 					</>
 				)}

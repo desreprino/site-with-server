@@ -29,11 +29,14 @@
         margin-right: .5em
         font-size: 1em
     &__paragraph
-        @include typography(null, null, 1rem, null, null ,1.3rem)
+        @include typography(null, null, 100%, null, null, 1.3rem)
         &--first
             display: inline
         &--home
             text-overflow: ellipsis
+
+    &__paragraphFinal
+        white-space: nowrap
 
     &__link
         @include typography(Roboto, bold, 1rem, $grey)

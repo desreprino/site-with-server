@@ -1,6 +1,6 @@
 .aboutUsMain
     display: flex
-    flex-wrap: wrap
+    flex-wrap: nowrap
     gap: 3%
     &__image
         width: 100%
@@ -29,11 +29,14 @@
         margin-right: .5em
         font-size: 1em
     &__paragraph
-        @include typography(null, null, 1rem, null, null ,1.3rem)
+        @include typography(null, null, 100%, null, null, 1.3rem)
         &--first
             display: inline
         &--home
             text-overflow: ellipsis
+
+    &__paragraphFinal
+        white-space: nowrap
 
     &__link
         @include typography(Roboto, bold, 1rem, $grey)
@@ -46,3 +49,7 @@
 
         &:visited
             color: $grey
+
+@media (max-width: 780px)
+    .aboutUsMain
+        flex-direction: column

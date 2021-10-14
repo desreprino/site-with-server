@@ -10,19 +10,19 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import ProductDetail from "./pages/ProductDetail"
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
 	const routes = [
 		{ path: "/", component: <Home /> },
 		{ path: "/productos", component: <Products /> },
 		{
-			path: "/productos/categorias/:category",
+			path: "/categorias/:category",
 			component: <Category />,
-			exact: false,
+			exact: true,
 		},
-		{ 
-			path: "/product/:slug", 
+		{
+			path: "/productos/:slug",
 			component: <ProductDetail />,
 			exact: true,
 		},

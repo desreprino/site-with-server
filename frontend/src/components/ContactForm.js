@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 
+import sanityClient from "../utils/sanityClient";
+
 import Message from "./Message";
 
 const ContactForm = () => {
@@ -21,11 +23,21 @@ const ContactForm = () => {
 			setIsError(false);
 			setIsOk(false);
 
+			const [{ valor: correoEmisor }] = await sanityClient.fetch(
+				`*[_type == "dato" && nombre == "Correo electrónico emisor"]`
+			);
+
+			const [{ valor: correoReceptor }] = await sanityClient.fetch(
+				`*[_type == "dato" && nombre == "Correo electrónico receptor"]`
+			);
+
 			if (regexp.test(celValue)) {
 				const info = await axios({
 					method: "post",
 					url: "/sendmail",
 					data: {
+						from: `${correoEmisor ? correoEmisor : ""}`,
+						to: `${correoReceptor ? correoReceptor : ""}`,
 						subject: `Mensaje de ${nameValue}`,
 						html: `	<p><b>Nombre:</b> ${nameValue}</p>
 								<p><b>E-mail:</b> ${emailValue}</p>
@@ -34,6 +46,11 @@ const ContactForm = () => {
 						`,
 					},
 				});
+
+				setNameValue("");
+				setEmailValue("");
+				setMessageValue("");
+				setCelValue("");
 
 				if (info.status === 200) {
 					setIsOk(true);

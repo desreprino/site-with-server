@@ -41,7 +41,11 @@ export const BrandCardContainer = () => {
 	}, [setBrandOptionState]);
 
 	return (
-		<div className="brandCardContainer">
+		<div
+			className={`brandCardContainer ${
+				recommendedBrands?.length < 3 ? "brandCardContainer--lessThanThree" : ""
+			}`}
+		>
 			{recommendedBrands.map((brand, index) => {
 				const cardClickHandler = () => {
 					setBrandOptionState(brand.name);
@@ -52,11 +56,7 @@ export const BrandCardContainer = () => {
 						className="brandCardContainer__card"
 						onClick={cardClickHandler}
 					>
-						<Card
-							slug={brand.slug.current}
-							name={brand.name}
-							image={brand.image}
-						/>
+						<Card slug={brand.slug.current} image={brand.image} />
 					</div>
 				);
 			})}

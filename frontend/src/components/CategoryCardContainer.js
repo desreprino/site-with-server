@@ -32,13 +32,19 @@ const CategoryCardContainer = () => {
 		getCategories(query);
 	}, []);
 	return (
-		<div className="categoryCardContainer">
+		<div
+			className={`categoryCardContainer ${
+				recommendedCategories?.length < 3
+					? "categoryCardContainer--lessThanThree"
+					: ""
+			}`}
+		>
 			{recommendedCategories.map((category, index) => {
 				return (
 					<Link
 						key={index}
 						className="categoryCardContainer__link"
-						to={`/productos/categorias/${category.slug}`}
+						to={`/categorias/${category.slug}`}
 					>
 						<Card name={category.name} image={category.image} />
 					</Link>

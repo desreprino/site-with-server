@@ -96,13 +96,13 @@ const FilterBox = () => {
 			<h2 className="filterBox__title">Filtros</h2>
 			<div className="filterBox__selectContainer">
 				<FilterSelect
-					name="Tipo de producto"
+					name="Categoría"
 					state={categoryOptionState}
 					stateSetter={setCategoryOptionState}
 					list={categories}
 				/>
 				<FilterSelect
-					name="Auto (marca)"
+					name="Marca"
 					state={brandOptionState}
 					stateSetter={setBrandOptionState}
 					list={brands}

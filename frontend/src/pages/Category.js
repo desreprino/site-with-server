@@ -16,10 +16,15 @@ const Category = () => {
 
 	const { brandsRecommendedInCategory, setBrandsRecommendedInCategory } =
 		useRecommendedContext();
-	const { setSearchValueState, setCategoryOptionState } = useProductContext();
+	const { setSearchValueState, setCategoryOptionState, setBrandOptionState } =
+		useProductContext();
 
 	const { category } = useParams();
 
+	const categoryClickHandler = () => {
+		setSearchValueState("");
+		setBrandOptionState("");
+	};
 	useEffect(() => {
 		const query = `*[_type == "categoria" && slug.current == "${category}"] `;
 
@@ -66,6 +71,7 @@ const Category = () => {
 				className={`category__name  ${
 					!categoryItem.image && "category__name--isntImage"
 				}`}
+				onClick={categoryClickHandler}
 			>
 				{categoryItem.image && (
 					<img

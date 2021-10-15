@@ -1,7 +1,7 @@
 # Repuestos Rino
 
 El desarrollo del sitio se llevó a cabo haciendo foco en la creación de un diseño práctico, accesible e interactivo con la finalidad de brindar una rápida respuesta a los usuarios.
-Cada sección fue pensada con la finalidad de ofrecer dinamismo y asegurar el cumplimiento de las acciones y funcionalidades que proporcionan un sitio óptimo, personalizado y de fácil mantenimiento.
+Cada sección fue pensada con el objetivo de ofrecer dinamismo y asegurar el cumplimiento de las acciones y funcionalidades que proporcionan un sitio óptimo, personalizado y de fácil mantenimiento.
 La integración del mismo con la plataforma Sanity proporcionan un carácter autoadministrable de alto grado y, de la combinación con el sitio de Mercado Libre, resulta una potente herramienta de comercio.
 
 ## Administración con Sanity ⚙️

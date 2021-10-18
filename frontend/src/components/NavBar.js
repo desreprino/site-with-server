@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
-const NavBar = () => {
+
+const NavBar = ({open}) => {
 	const history = useHistory();
 
 	const [pathname, setPathname] = useState(history.location.pathname);
-
+ 
 	useEffect(() => {
 		history.listen((location) => {
 			setPathname(location.pathname);
@@ -25,7 +26,7 @@ const NavBar = () => {
 	];
 
 	return (
-		<nav className="navBar">
+		<nav className={!open ? "navBar" : "navBar open" }>
 			<ul className="navBar__list">
 				{links.map(({ path, text, href, target }) => {
 					return (

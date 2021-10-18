@@ -1,7 +1,7 @@
 .navBar
     align-items: center
     display: flex
-    flex-basis: 50vw
+    
     flex-grow: 999
     flex-wrap: nowrap
     height: 4rem
@@ -13,10 +13,6 @@
         justify-content: right
         padding: 0 1rem 0 0
         width: 100%
-
-        &Item
-            min-width: 10rem
-            width: 9vw
 
     &__link
         height: 100%
@@ -46,3 +42,21 @@
 @media (max-width: 780px)
     .navBar
         display: none
+        height: auto
+        &__list
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+              
+    .open
+        display: inline-block;
+       
+@media (min-width: 780px)
+    navBar
+        flex-basis: 50vw
+        &__listItem
+        min-width: 10rem
+        width: 9vw
+        
+

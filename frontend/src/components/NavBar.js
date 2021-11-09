@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
+import { useMenuContext } from "../contexts/MenuContext";
 
-const NavBar = ({open}) => {
+const NavBar = () => {
 	const history = useHistory();
 
+	const { navBarClassActive, setNavBarClassActive, setOpen, open } =
+		useMenuContext();
+
 	const [pathname, setPathname] = useState(history.location.pathname);
- 
+
+	const navBarClickHandler = () => {
+		setNavBarClassActive(" navBar--closing");
+		setTimeout(() => {
+			setNavBarClassActive(" navBar--final");
+		}, 500);
+		setOpen(!open);
+	};
+
 	useEffect(() => {
 		history.listen((location) => {
 			setPathname(location.pathname);
@@ -26,13 +38,14 @@ const NavBar = ({open}) => {
 	];
 
 	return (
-		<nav className={!open ? "navBar" : "navBar open" }>
+		<nav className={`navBar ${navBarClassActive}`}>
 			<ul className="navBar__list">
 				{links.map(({ path, text, href, target }) => {
 					return (
 						<li key={text} className="navBar__listItem">
 							{path && !href ? (
 								<NavLink
+									onClick={navBarClickHandler}
 									exact
 									to={path}
 									className="navBar__link"
@@ -46,7 +59,7 @@ const NavBar = ({open}) => {
 								</NavLink>
 							) : (
 								<a className="navBar__link" href={href} target={target}>
-									{text}
+									<span className="navBar__text">{text}</span>
 								</a>
 							)}
 						</li>

@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 const ProductItem = ({ product: { slug, name } }) => {
 	return (
 		<li className="productItem">
-			<Link to={`/productos/${slug.current}`}>{name}</Link>
+			<Link exact to={`/productos/${slug.current}`}>
+				{name}
+			</Link>
 		</li>
 	);
 };

@@ -1,11 +1,22 @@
-import menuImg from "../assets/icons/burguer_menu.png"
+import { useMenuContext } from "../contexts/MenuContext.js";
 
-const BurguerMenu = ({open, setOpen}) => {
+import menuImg from "../assets/icons/burguer_menu.png";
 
-	
-	const searchClickHandler = () => {
-		setOpen(!open)
-	}
+const BurguerMenu = () => {
+	const { open, setOpen, setNavBarClassActive } = useMenuContext();
+
+	const menuClickHandler = () => {
+		if (open) {
+			setNavBarClassActive(" navBar--closing");
+			setTimeout(() => {
+				setNavBarClassActive(" navBar--final");
+			}, 500);
+			setOpen(!open);
+		} else {
+			setNavBarClassActive(" navBar--open");
+			setOpen(!open);
+		}
+	};
 
 	return (
 		<div className="burguerMenu">
@@ -13,7 +24,7 @@ const BurguerMenu = ({open, setOpen}) => {
 				src={menuImg}
 				alt="menu"
 				className="burguerMenu__img"
-				onClick={searchClickHandler}
+				onClick={menuClickHandler}
 			/>
 		</div>
 	);

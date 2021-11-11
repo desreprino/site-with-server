@@ -52,6 +52,7 @@
         transition: opacity .5s
         opacity: 0
         z-index: 0
+        padding: 0
 
         &--open
             opacity: 1
@@ -63,13 +64,14 @@
 
         &--final
             z-index: 0
+            display: none
 
         &__list
             display: flex
             background: $black
             flex-direction: column
             justify-content: space-evenly
-            padding: 0 1rem 0 0
+            padding: 0
             width: 100%
             height: 100%
             z-index: 3

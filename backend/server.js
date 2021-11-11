@@ -22,7 +22,8 @@ app.post("/sendmail", async (req, res) => {
 	}
 });
 
-app.use(express.static(resolve(__dirname, "../frontend/build")));
+app.use("/", express.static(resolve(__dirname, "../frontend/build")));
+app.use("/*", express.static(resolve(__dirname, "../frontend/build")));
 
 const server = app.listen(PORT, () =>
 	console.log(`Serve on http://localhost:${PORT}`)

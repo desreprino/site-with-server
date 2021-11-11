@@ -23,10 +23,6 @@ const ContactForm = () => {
 			setIsError(false);
 			setIsOk(false);
 
-			const [{ valor: correoEmisor }] = await sanityClient.fetch(
-				`*[_type == "dato" && nombre == "Correo electrónico emisor"]`
-			);
-
 			const [{ valor: correoReceptor }] = await sanityClient.fetch(
 				`*[_type == "dato" && nombre == "Correo electrónico receptor"]`
 			);
@@ -36,7 +32,6 @@ const ContactForm = () => {
 					method: "post",
 					url: "/sendmail",
 					data: {
-						from: `${correoEmisor ? correoEmisor : ""}`,
 						to: `${correoReceptor ? correoReceptor : ""}`,
 						subject: `Mensaje de ${nameValue}`,
 						html: `	<p><b>Nombre:</b> ${nameValue}</p>

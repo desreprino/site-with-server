@@ -74,8 +74,6 @@ La integración del mismo con la plataforma Sanity proporcionan un carácter aut
 
   --_Correo electrónico receptor_: Dirección de correo electrónico al cual lleguen los mensajes de contacto enviados a través del formulario
 
-  --_Correo electrónico emisor_: Dirección de correo electrónico que figurará como emisora de los mensajes de contacto enviados a través del formulario
-
   --_Teléfono_: Teléfono de contacto donde se generará el mensaje de WhatsApp al pedir cotización. También se vera reflejado en la sección de contacto.
 
 ## Despliegue 📦

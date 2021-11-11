@@ -16,7 +16,7 @@ const BurguerMenu = () => {
 			setNavBarClassActive("");
 			setTimeout(() => {
 				setNavBarClassActive(" navBar--open");
-			}, 500);
+			}, 100);
 			setOpen(!open);
 		}
 	};
